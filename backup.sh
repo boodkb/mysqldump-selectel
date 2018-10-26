@@ -5,8 +5,8 @@ filename=${now}_${MYSQL_DATABASE}.sql.gz
 
 set -o pipefail
 
-mysqldump --opt -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${filename} 2>&1 >/dev/null && \
-supload -u ${SELECTEL_USER} -k ${SELECTEL_PASSWORD} ${SELECTEL_DEST} ${filename} 2>&1 >/dev/null
+mysqldump --opt -h${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${filename} && \
+supload -u ${SELECTEL_USER} -k ${SELECTEL_PASSWORD} ${SELECTEL_DEST} ${filename}
 
 res=$?
 
